@@ -2,8 +2,14 @@
 
 //procenty
 const float NBP = 0.0675;
-const float inflation = 0.108;
-const float tax = 0.19;
+const float INFLATION = 0.108;
+const float TAX = 0.19;
+
+float calculateProfit(float amount, float time, float intrest);
+float calculateTax(float profit, float constTax);
+float calculateProfitAfterTax(float profit, float tax);
+float calculateWithdrawlCosts();
+void displayCalculations(float amount, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts);
 
 int main(void)
 {
@@ -23,6 +29,7 @@ int main(void)
     std::cout<<"7. 10 letnie EDO - 7.25 %"<<std::endl;
     std::cout<<"8. 12 letnie ROD - 7.50 %"<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<std::endl;
 
     //choice
     int choice = 0;
@@ -41,11 +48,23 @@ int main(void)
         std::cin>>amount;
     } while (amount < 0);
 
+    float time = 0; //in years
+    float intrest = 0; //per year
+    float profit = 0;
+    float calculatedTax = 0;
+    float profitAfterTax = 0;
+    float withdrawlCosts = 0;
     //calculation
     switch (choice)
     {
     case 1:
-        /* code */
+        time = 0.25;
+        intrest = 0.03;
+        profit = calculateProfit(amount, time, intrest);
+        calculatedTax = calculateTax(profit, TAX);
+        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+        withdrawlCosts = 0;
+        displayCalculations(amount, profit, calculatedTax, profitAfterTax, withdrawlCosts);
         break;
     case 2:
         /* code */
@@ -72,10 +91,41 @@ int main(void)
         break;
     }
 
-
-
-
-
-
     return 0;
+}
+
+float calculateProfit(float amount, float time, float intrest)
+{
+    float profit = amount * time * intrest;
+    return profit;
+}
+float calculateTax(float profit, float constTax)
+{
+    float calculatedTax = profit * constTax;
+    return calculatedTax;
+}
+float calculateProfitAfterTax(float profit, float calculatedtax)
+{
+    float profitAfterTax = profit - calculatedtax;
+    return profitAfterTax;
+}
+float calculateWithdrawlCosts()
+{
+    return 0;
+}
+void displayCalculations(float amount, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts)
+{
+    std::cout<<std::endl;
+    std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<"Wyliczenia dla kwoty: "<<amount<<" zl"<<std::endl;
+    std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<"Zysk:             "<<profit<<" zl"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Podatek:          "<<calculatedTax<<" zl"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Zysk po podatku:  "<<profitAfterTax<<" zl"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Koszty wycofania: "<<withdrawlCosts<<" zl"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"----------------------------------------"<<std::endl;
 }
