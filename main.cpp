@@ -5,6 +5,7 @@ const float NBP = 0.0675;
 const float INFLATION = 0.108;
 const float TAX = 0.19;
 
+void displayMenu();
 float calculateProfit(float amount, float time, float intrest);
 float calculateTax(float profit, float constTax);
 float calculateProfitChangingInterest(float amount, float time, float intrest, float intrestFirstPeriod);
@@ -16,23 +17,8 @@ void displayCalculations(float amount, float time, float profit, float calculate
 
 int main(void)
 {
-    //list
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"I. Obligacje o oprocentowaniu stalym - odsetki przy wykupie"<<std::endl;
-    std::cout<<"1. 3 miesięczne OTS - 3.00 %"<<std::endl;
-    std::cout<<"2. 3 letnie TOS - 6.85 %"<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"II. Obligacje o oprocentowaniu zmiennym - odsetki co miesiąc"<<std::endl;
-    std::cout<<"3. 1 rok ROR - 6.75 %"<<std::endl;
-    std::cout<<"4. 2 letnie DOR - 6.85 %"<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"III. Obligacje indeksowane inflacją"<<std::endl;
-    std::cout<<"5. 4 letnie COI - 7.00 %, odsetki co roku"<<std::endl;
-    std::cout<<"6. !Rodzinne 6 letnie ROS - 7.20 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
-    std::cout<<"7. 10 letnie EDO - 7.25 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
-    std::cout<<"8. !Rodzinne 12 letnie ROD - 7.50 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<std::endl;
+    //display Menu
+    displayMenu();
 
     //choice
     int choice = 0;
@@ -51,6 +37,7 @@ int main(void)
         std::cin>>amount;
     } while (amount < 0);
 
+    //variables to use in calculations
     float time = 0; //in years
     float intrest = 0; //per year
     float intrestFirstPeriod = 0;
@@ -155,6 +142,26 @@ int main(void)
     return 0;
 }
 
+void displayMenu()
+{
+    //list
+    std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<"I. Obligacje o oprocentowaniu stalym - odsetki przy wykupie"<<std::endl;
+    std::cout<<"1. 3 miesięczne OTS - 3.00 %"<<std::endl;
+    std::cout<<"2. 3 letnie TOS - 6.85 %"<<std::endl;
+    std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<"II. Obligacje o oprocentowaniu zmiennym - odsetki co miesiąc"<<std::endl;
+    std::cout<<"3. 1 rok ROR - 6.75 %"<<std::endl;
+    std::cout<<"4. 2 letnie DOR - 6.85 %"<<std::endl;
+    std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<"III. Obligacje indeksowane inflacją"<<std::endl;
+    std::cout<<"5. 4 letnie COI - 7.00 %, odsetki co roku"<<std::endl;
+    std::cout<<"6. !Rodzinne 6 letnie ROS - 7.20 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
+    std::cout<<"7. 10 letnie EDO - 7.25 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
+    std::cout<<"8. !Rodzinne 12 letnie ROD - 7.50 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
+    std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<std::endl;
+}
 float calculateProfit(float amount, float time, float intrest)
 {
     float profit = amount * time * intrest;
