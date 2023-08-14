@@ -8,14 +8,14 @@ const float TAX = 0.19;
 float calculateProfit(float amount, float time, float intrest);
 float calculateTax(float profit, float constTax);
 float calculateProfitAfterTax(float profit, float tax);
-float calculateWithdrawlCosts();
-void displayCalculations(float amount, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts);
+float calculateWithdrawlCosts(float amount, float fee);
+void displayCalculations(float amount, float time, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts);
 
 int main(void)
 {
     //list
     std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"I. Obligacje o oprocentowaniu stalym"<<std::endl;
+    std::cout<<"I. Obligacje o oprocentowaniu stalym - odsetki przy wykupie"<<std::endl;
     std::cout<<"1. 3 miesięczne OTS - 3.00 %"<<std::endl;
     std::cout<<"2. 3 letnie TOS - 6.85 %"<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
@@ -54,20 +54,29 @@ int main(void)
     float calculatedTax = 0;
     float profitAfterTax = 0;
     float withdrawlCosts = 0;
+    float fee = 0;
+
     //calculation
     switch (choice)
     {
-    case 1:
+    case 1: //OTS
         time = 0.25;
         intrest = 0.03;
         profit = calculateProfit(amount, time, intrest);
         calculatedTax = calculateTax(profit, TAX);
         profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
         withdrawlCosts = 0;
-        displayCalculations(amount, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
         break;
-    case 2:
-        /* code */
+    case 2: //TOS
+        time = 3.0;
+        intrest = 0.0685;
+        profit = calculateProfit(amount, time, intrest);
+        calculatedTax = calculateTax(profit, TAX);
+        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+        fee = 0.70;
+        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
         break;
     case 3:
         /* code */
@@ -109,15 +118,16 @@ float calculateProfitAfterTax(float profit, float calculatedtax)
     float profitAfterTax = profit - calculatedtax;
     return profitAfterTax;
 }
-float calculateWithdrawlCosts()
+float calculateWithdrawlCosts(float amount, float fee)
 {
-    return 0;
+    float withdrawalCosts = (amount / 100) * fee;
+    return withdrawalCosts;
 }
-void displayCalculations(float amount, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts)
+void displayCalculations(float amount, float time, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts)
 {
     std::cout<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"Wyliczenia dla kwoty: "<<amount<<" zl"<<std::endl;
+    std::cout<<"Wyliczenia dla kwoty "<<amount<<" zl"<<" po "<<time<<" latach"<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
     std::cout<<"Zysk:             "<<profit<<" zl"<<std::endl;
     std::cout<<std::endl;
@@ -126,6 +136,7 @@ void displayCalculations(float amount, float profit, float calculatedTax, float 
     std::cout<<"Zysk po podatku:  "<<profitAfterTax<<" zl"<<std::endl;
     std::cout<<std::endl;
     std::cout<<"Koszty wycofania: "<<withdrawlCosts<<" zl"<<std::endl;
+    std::cout<<"Jeśli oplata przewysza odsetki - ograniczona do ich wysokosci"<<std::endl;
     std::cout<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
 }
