@@ -38,14 +38,11 @@ int main(void)
     } while (amount < 0);
 
     //variables to use in calculations
-    float time = 0; //in years
     float intrest = 0; //per year
-    float intrestFirstPeriod = 0;
     float profit = 0;
     float calculatedTax = 0;
     float profitAfterTax = 0;
     float withdrawlCosts = 0;
-    float fee = 0;
 
     //calculation
     if (choice == 1)
