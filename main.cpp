@@ -5,6 +5,7 @@
 #include "Dor.h"
 #include "Coi.h"
 #include "Ros.h"
+#include "Edo.h"
 
 //procenty
 const float NBP = 0.0675;
@@ -116,17 +117,17 @@ int main(void)
         withdrawlCosts = Shares6.calculateWithdrawlCosts(amount);
         Shares6.displayCalculationsTos(amount, profit, calculatedTax, profitAfterTax, withdrawlCosts);
     }
-    // case 7: //EDO
-    //     time = 10.0;
-    //     intrestFirstPeriod = 0.072;
-    //     intrest = INFLATION + 0.015;
-    //     profit = calculateProfitInflationCapitalization(amount, time, intrest, intrestFirstPeriod);
-    //     calculatedTax = calculateTax(profit, TAX);
-    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-    //     fee = 2.0;
-    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-    //     break;
+
+    if (choice == 7)
+    {
+        Edo Shares7;
+        intrest = INFLATION + 0.015;
+        profit = Shares7.calculateProfitInflationCapitalization(amount, intrest);
+        calculatedTax = Shares7.calculateTax(profit, TAX);
+        profitAfterTax = Shares7.calculateProfitAfterTax(profit, calculatedTax);
+        withdrawlCosts = Shares7.calculateWithdrawlCosts(amount);
+        Shares7.displayCalculationsTos(amount, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    }
     // case 8: //ROD
     //     time = 12.0;
     //     intrestFirstPeriod = 0.075;
