@@ -1,6 +1,10 @@
 #include <iostream>
 #include "Ots.h"
 #include "Tos.h"
+#include "Ror.h"
+#ifndef MAIN_CPP
+#define MAIN_CPP
+
 
 //procenty
 const float NBP = 0.0675;
@@ -69,17 +73,16 @@ int main(void)
         withdrawlCosts = Shares2.calculateWithdrawlCosts(amount);
         Shares2.displayCalculationsTos(amount, profit, calculatedTax, profitAfterTax, withdrawlCosts);
     }
-    // case 3: //ROR
-    //     time = 1.0;
-    //     intrestFirstPeriod = 0.0675;
-    //     intrest = NBP;
-    //     profit = calculateProfitChangingInterest(amount, time, intrest, intrestFirstPeriod);
-    //     calculatedTax = calculateTax(profit, TAX);
-    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-    //     fee = 0.50;
-    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-    //     break;
+
+    if (choice == 3)
+    {
+        Ror Shares3;
+        profit = Shares3.calculateProfitChangingInterest(amount, NBP);
+        calculatedTax = Shares3.calculateTax(profit, TAX);
+        profitAfterTax = Shares3.calculateProfitAfterTax(profit, calculatedTax);
+        withdrawlCosts = Shares3.calculateWithdrawlCosts(amount);
+        Shares3.displayCalculationsTos(amount, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    }
     // case 4: //DOR
     //     time = 2.0;
     //     intrestFirstPeriod = 0.0685;
@@ -248,3 +251,5 @@ void displayMenu()
 //     std::cout<<std::endl;
 //     std::cout<<"----------------------------------------"<<std::endl;
 // }
+
+#endif
