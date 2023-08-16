@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Ots.h"
+#include "Tos.h"
 
 //procenty
 const float NBP = 0.0675;
@@ -52,34 +53,22 @@ int main(void)
     //calculation
     if (choice == 1)
     {
-        Ots Shares;
-        profit = Shares.calculateProfit(amount);
-        calculatedTax = Shares.calculateTax(profit, TAX);
-        profitAfterTax = Shares.calculateProfitAfterTax(profit, calculatedTax);
-        //withdrawlCosts = 0;
-        Shares.displayCalculations(amount, profit, calculatedTax, profitAfterTax);
+        Ots Shares1;
+        profit = Shares1.calculateProfit(amount);
+        calculatedTax = Shares1.calculateTax(profit, TAX);
+        profitAfterTax = Shares1.calculateProfitAfterTax(profit, calculatedTax);
+        Shares1.displayCalculations(amount, profit, calculatedTax, profitAfterTax);
     }
-    // switch (choice)
-    // {
-    // case 1: //OTS
-    //     time = 0.25;
-    //     intrest = 0.03;
-    //     profit = calculateProfit(amount, time, intrest);
-    //     calculatedTax = calculateTax(profit, TAX);
-    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-    //     withdrawlCosts = 0;
-    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-    //     break;
-    // case 2: //TOS
-    //     time = 3.0;
-    //     intrest = 0.0685;
-    //     profit = calculateProfitCapitalization(amount, time, intrest);
-    //     calculatedTax = calculateTax(profit, TAX);
-    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-    //     fee = 0.70;
-    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-    //     break;
+
+    if (choice == 2)
+    {
+        Tos Shares2;
+        profit = Shares2.calculateProfitCapitalization(amount);
+        calculatedTax = Shares2.calculateTax(profit, TAX);
+        profitAfterTax = Shares2.calculateProfitAfterTax(profit, calculatedTax);
+        withdrawlCosts = Shares2.calculateWithdrawlCosts(amount);
+        Shares2.displayCalculationsTos(amount, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    }
     // case 3: //ROR
     //     time = 1.0;
     //     intrestFirstPeriod = 0.0675;
