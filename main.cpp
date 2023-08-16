@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Ots.h"
 
 //procenty
 const float NBP = 0.0675;
@@ -6,15 +7,15 @@ const float INFLATION = 0.108;
 const float TAX = 0.19;
 
 void displayMenu();
-float calculateProfit(float amount, float time, float intrest);
-float calculateProfitCapitalization(float amount, float time, float intrest);
-float calculateTax(float profit, float constTax);
-float calculateProfitChangingInterest(float amount, float time, float intrest, float intrestFirstPeriod);
-float calculateProfitInflation(float amount, float time, float intrest, float intrestFirstPeriod);
-float calculateProfitInflationCapitalization(float amount, float time, float intrest, float intrestFirstPeriod);
-float calculateProfitAfterTax(float profit, float tax);
-float calculateWithdrawlCosts(float amount, float fee);
-void displayCalculations(float amount, float time, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts);
+// float calculateProfit(float amount, float time, float intrest);
+// float calculateProfitCapitalization(float amount, float time, float intrest);
+// float calculateTax(float profit, float constTax);
+// float calculateProfitChangingInterest(float amount, float time, float intrest, float intrestFirstPeriod);
+// float calculateProfitInflation(float amount, float time, float intrest, float intrestFirstPeriod);
+// float calculateProfitInflationCapitalization(float amount, float time, float intrest, float intrestFirstPeriod);
+// float calculateProfitAfterTax(float profit, float tax);
+// float calculateWithdrawlCosts(float amount, float fee);
+// void displayCalculations(float amount, float time, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts);
 
 int main(void)
 {
@@ -49,96 +50,105 @@ int main(void)
     float fee = 0;
 
     //calculation
-    switch (choice)
+    if (choice == 1)
     {
-    case 1: //OTS
-        time = 0.25;
-        intrest = 0.03;
-        profit = calculateProfit(amount, time, intrest);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        withdrawlCosts = 0;
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    case 2: //TOS
-        time = 3.0;
-        intrest = 0.0685;
-        profit = calculateProfitCapitalization(amount, time, intrest);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        fee = 0.70;
-        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    case 3: //ROR
-        time = 1.0;
-        intrestFirstPeriod = 0.0675;
-        intrest = NBP;
-        profit = calculateProfitChangingInterest(amount, time, intrest, intrestFirstPeriod);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        fee = 0.50;
-        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    case 4: //DOR
-        time = 2.0;
-        intrestFirstPeriod = 0.0685;
-        intrest = NBP + 0.001;
-        profit = calculateProfitChangingInterest(amount, time, intrest, intrestFirstPeriod);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        fee = 0.50;
-        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    case 5: //COI
-        time = 4.0;
-        intrestFirstPeriod = 0.07;
-        intrest = INFLATION + 0.01;
-        profit = calculateProfitInflation(amount, time, intrest, intrestFirstPeriod);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        fee = 0.70;
-        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    case 6: //ROS
-        time = 6.0;
-        intrestFirstPeriod = 0.072;
-        intrest = INFLATION + 0.015;
-        profit = calculateProfitInflationCapitalization(amount, time, intrest, intrestFirstPeriod);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        fee = 0.70;
-        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    case 7: //EDO
-        time = 10.0;
-        intrestFirstPeriod = 0.072;
-        intrest = INFLATION + 0.015;
-        profit = calculateProfitInflationCapitalization(amount, time, intrest, intrestFirstPeriod);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        fee = 2.0;
-        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    case 8: //ROD
-        time = 12.0;
-        intrestFirstPeriod = 0.075;
-        intrest = INFLATION + 0.0175;
-        profit = calculateProfitInflationCapitalization(amount, time, intrest, intrestFirstPeriod);
-        calculatedTax = calculateTax(profit, TAX);
-        profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
-        fee = 2.0;
-        withdrawlCosts = calculateWithdrawlCosts(amount, fee);
-        displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
-        break;
-    default:
-        break;
+        Ots Shares;
+        profit = Shares.calculateProfit(amount);
+        calculatedTax = Shares.calculateTax(profit, TAX);
+        profitAfterTax = Shares.calculateProfitAfterTax(profit, calculatedTax);
+        //withdrawlCosts = 0;
+        Shares.displayCalculations(amount, profit, calculatedTax, profitAfterTax);
     }
+    // switch (choice)
+    // {
+    // case 1: //OTS
+    //     time = 0.25;
+    //     intrest = 0.03;
+    //     profit = calculateProfit(amount, time, intrest);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     withdrawlCosts = 0;
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // case 2: //TOS
+    //     time = 3.0;
+    //     intrest = 0.0685;
+    //     profit = calculateProfitCapitalization(amount, time, intrest);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     fee = 0.70;
+    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // case 3: //ROR
+    //     time = 1.0;
+    //     intrestFirstPeriod = 0.0675;
+    //     intrest = NBP;
+    //     profit = calculateProfitChangingInterest(amount, time, intrest, intrestFirstPeriod);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     fee = 0.50;
+    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // case 4: //DOR
+    //     time = 2.0;
+    //     intrestFirstPeriod = 0.0685;
+    //     intrest = NBP + 0.001;
+    //     profit = calculateProfitChangingInterest(amount, time, intrest, intrestFirstPeriod);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     fee = 0.50;
+    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // case 5: //COI
+    //     time = 4.0;
+    //     intrestFirstPeriod = 0.07;
+    //     intrest = INFLATION + 0.01;
+    //     profit = calculateProfitInflation(amount, time, intrest, intrestFirstPeriod);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     fee = 0.70;
+    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // case 6: //ROS
+    //     time = 6.0;
+    //     intrestFirstPeriod = 0.072;
+    //     intrest = INFLATION + 0.015;
+    //     profit = calculateProfitInflationCapitalization(amount, time, intrest, intrestFirstPeriod);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     fee = 0.70;
+    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // case 7: //EDO
+    //     time = 10.0;
+    //     intrestFirstPeriod = 0.072;
+    //     intrest = INFLATION + 0.015;
+    //     profit = calculateProfitInflationCapitalization(amount, time, intrest, intrestFirstPeriod);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     fee = 2.0;
+    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // case 8: //ROD
+    //     time = 12.0;
+    //     intrestFirstPeriod = 0.075;
+    //     intrest = INFLATION + 0.0175;
+    //     profit = calculateProfitInflationCapitalization(amount, time, intrest, intrestFirstPeriod);
+    //     calculatedTax = calculateTax(profit, TAX);
+    //     profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
+    //     fee = 2.0;
+    //     withdrawlCosts = calculateWithdrawlCosts(amount, fee);
+    //     displayCalculations(amount, time, profit, calculatedTax, profitAfterTax, withdrawlCosts);
+    //     break;
+    // default:
+    //     break;
+    // }
 
     return 0;
 }
@@ -163,89 +173,89 @@ void displayMenu()
     std::cout<<"----------------------------------------"<<std::endl;
     std::cout<<std::endl;
 }
-float calculateProfit(float amount, float time, float intrest)
-{
-    float profit = amount * time * intrest;
-    return profit;
-}
+// float calculateProfit(float amount, float time, float intrest)
+// {
+//     float profit = amount * time * intrest;
+//     return profit;
+// }
 
-float calculateProfitCapitalization(float amount, float time, float intrest)
-{
-    float profit = 0;
+// float calculateProfitCapitalization(float amount, float time, float intrest)
+// {
+//     float profit = 0;
 
-    for (size_t i = 0; i < time; i++)
-    {
-        float profitPerYear = amount * intrest;
-        amount = amount + profitPerYear;
-        profit += profitPerYear;
-    }
+//     for (size_t i = 0; i < time; i++)
+//     {
+//         float profitPerYear = amount * intrest;
+//         amount = amount + profitPerYear;
+//         profit += profitPerYear;
+//     }
 
-    return profit;
-}
+//     return profit;
+// }
 
 
-float calculateProfitChangingInterest(float amount, float time, float intrest, float intrestFirstPeriod)
-{
-    float profit1stMonth = amount * (intrestFirstPeriod/12);
-    float profitRest = amount * (intrest/12) * (time * 12 - 1);
-    float profit = profit1stMonth + profitRest;
-    return profit;
-}
+// float calculateProfitChangingInterest(float amount, float time, float intrest, float intrestFirstPeriod)
+// {
+//     float profit1stMonth = amount * (intrestFirstPeriod/12);
+//     float profitRest = amount * (intrest/12) * (time * 12 - 1);
+//     float profit = profit1stMonth + profitRest;
+//     return profit;
+// }
 
-float calculateProfitInflation(float amount, float time, float intrest, float intrestFirstPeriod)
-{
-    float timeWithoutFirstYear = time - 1.0;
-    float profit1stYear = amount * intrestFirstPeriod;
-    float profitRest = amount * intrest * timeWithoutFirstYear;
-    float profit = profit1stYear + profitRest;
-    return profit;
-}
+// float calculateProfitInflation(float amount, float time, float intrest, float intrestFirstPeriod)
+// {
+//     float timeWithoutFirstYear = time - 1.0;
+//     float profit1stYear = amount * intrestFirstPeriod;
+//     float profitRest = amount * intrest * timeWithoutFirstYear;
+//     float profit = profit1stYear + profitRest;
+//     return profit;
+// }
 
-float calculateProfitInflationCapitalization(float amount, float time, float intrest, float intrestFirstPeriod)
-{
-    int timeWithoutFirstYear = time - 1.0;
-    float profit1stYear = amount * intrestFirstPeriod;
-    amount = amount + profit1stYear;
-    float profitRest = 0;
+// float calculateProfitInflationCapitalization(float amount, float time, float intrest, float intrestFirstPeriod)
+// {
+//     int timeWithoutFirstYear = time - 1.0;
+//     float profit1stYear = amount * intrestFirstPeriod;
+//     amount = amount + profit1stYear;
+//     float profitRest = 0;
 
-    for (size_t i = 0; i < timeWithoutFirstYear; i++)
-    {
-        float profitRestPerYear = amount * intrest;
-        amount = amount + profitRestPerYear;
-        profitRest += profitRestPerYear;
-    }
-    float profit = profit1stYear + profitRest;
-    return profit;
-}
+//     for (size_t i = 0; i < timeWithoutFirstYear; i++)
+//     {
+//         float profitRestPerYear = amount * intrest;
+//         amount = amount + profitRestPerYear;
+//         profitRest += profitRestPerYear;
+//     }
+//     float profit = profit1stYear + profitRest;
+//     return profit;
+// }
 
-float calculateTax(float profit, float constTax)
-{
-    float calculatedTax = profit * constTax;
-    return calculatedTax;
-}
-float calculateProfitAfterTax(float profit, float calculatedtax)
-{
-    float profitAfterTax = profit - calculatedtax;
-    return profitAfterTax;
-}
-float calculateWithdrawlCosts(float amount, float fee)
-{
-    float withdrawalCosts = (amount / 100) * fee;
-    return withdrawalCosts;
-}
-void displayCalculations(float amount, float time, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts)
-{
-    std::cout<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"Wyliczenia dla kwoty "<<amount<<" PLN"<<" po "<<time<<" latach"<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"Zysk:             "<<profit<<" PLN"<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<"Podatek:          "<<calculatedTax<<" PLN"<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<"Zysk po podatku:  "<<profitAfterTax<<" PLN"<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<"Koszty wycofania: "<<withdrawlCosts<<" PLN"<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-}
+// float calculateTax(float profit, float constTax)
+// {
+//     float calculatedTax = profit * constTax;
+//     return calculatedTax;
+// }
+// float calculateProfitAfterTax(float profit, float calculatedtax)
+// {
+//     float profitAfterTax = profit - calculatedtax;
+//     return profitAfterTax;
+// }
+// float calculateWithdrawlCosts(float amount, float fee)
+// {
+//     float withdrawalCosts = (amount / 100) * fee;
+//     return withdrawalCosts;
+// }
+// void displayCalculations(float amount, float time, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts)
+// {
+//     std::cout<<std::endl;
+//     std::cout<<"----------------------------------------"<<std::endl;
+//     std::cout<<"Wyliczenia dla kwoty "<<amount<<" PLN"<<" po "<<time<<" latach"<<std::endl;
+//     std::cout<<"----------------------------------------"<<std::endl;
+//     std::cout<<"Zysk:             "<<profit<<" PLN"<<std::endl;
+//     std::cout<<std::endl;
+//     std::cout<<"Podatek:          "<<calculatedTax<<" PLN"<<std::endl;
+//     std::cout<<std::endl;
+//     std::cout<<"Zysk po podatku:  "<<profitAfterTax<<" PLN"<<std::endl;
+//     std::cout<<std::endl;
+//     std::cout<<"Koszty wycofania: "<<withdrawlCosts<<" PLN"<<std::endl;
+//     std::cout<<std::endl;
+//     std::cout<<"----------------------------------------"<<std::endl;
+// }
