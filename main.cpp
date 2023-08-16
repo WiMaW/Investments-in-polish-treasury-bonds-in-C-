@@ -7,6 +7,7 @@ const float TAX = 0.19;
 
 void displayMenu();
 float calculateProfit(float amount, float time, float intrest);
+float calculateProfitCapitalization(float amount, float time, float intrest);
 float calculateTax(float profit, float constTax);
 float calculateProfitChangingInterest(float amount, float time, float intrest, float intrestFirstPeriod);
 float calculateProfitInflation(float amount, float time, float intrest, float intrestFirstPeriod);
@@ -62,7 +63,7 @@ int main(void)
     case 2: //TOS
         time = 3.0;
         intrest = 0.0685;
-        profit = calculateProfit(amount, time, intrest);
+        profit = calculateProfitCapitalization(amount, time, intrest);
         calculatedTax = calculateTax(profit, TAX);
         profitAfterTax = calculateProfitAfterTax(profit, calculatedTax);
         fee = 0.70;
@@ -168,6 +169,21 @@ float calculateProfit(float amount, float time, float intrest)
     return profit;
 }
 
+float calculateProfitCapitalization(float amount, float time, float intrest)
+{
+    float profit = 0;
+
+    for (size_t i = 0; i < time; i++)
+    {
+        float profitPerYear = amount * intrest;
+        amount = amount + profitPerYear;
+        profit += profitPerYear;
+    }
+
+    return profit;
+}
+
+
 float calculateProfitChangingInterest(float amount, float time, float intrest, float intrestFirstPeriod)
 {
     float profit1stMonth = amount * (intrestFirstPeriod/12);
@@ -221,15 +237,15 @@ void displayCalculations(float amount, float time, float profit, float calculate
 {
     std::cout<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"Wyliczenia dla kwoty "<<amount<<" zl"<<" po "<<time<<" latach"<<std::endl;
+    std::cout<<"Wyliczenia dla kwoty "<<amount<<" PLN"<<" po "<<time<<" latach"<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"Zysk:             "<<profit<<" zl"<<std::endl;
+    std::cout<<"Zysk:             "<<profit<<" PLN"<<std::endl;
     std::cout<<std::endl;
-    std::cout<<"Podatek:          "<<calculatedTax<<" zl"<<std::endl;
+    std::cout<<"Podatek:          "<<calculatedTax<<" PLN"<<std::endl;
     std::cout<<std::endl;
-    std::cout<<"Zysk po podatku:  "<<profitAfterTax<<" zl"<<std::endl;
+    std::cout<<"Zysk po podatku:  "<<profitAfterTax<<" PLN"<<std::endl;
     std::cout<<std::endl;
-    std::cout<<"Koszty wycofania: "<<withdrawlCosts<<" zl"<<std::endl;
+    std::cout<<"Koszty wycofania: "<<withdrawlCosts<<" PLN"<<std::endl;
     std::cout<<std::endl;
     std::cout<<"----------------------------------------"<<std::endl;
 }
