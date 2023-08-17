@@ -30,18 +30,18 @@ class Ots {
     void displayCalculations(float amount, float profit, float calculatedTax, float profitAfterTax)
     {
         std::cout<<std::endl;
-        std::cout<<"----------------------------------------"<<std::endl;
-        std::cout<<"Wyliczenia dla kwoty "<<amount<<" PLN"<<" po "<<time<<" latach"<<std::endl;
-        std::cout<<"----------------------------------------"<<std::endl;
-        std::cout<<"Zysk:             "<<profit<<" PLN"<<std::endl;
+        std::cout<<"--------------------------------------------------"<<std::endl;
+        std::cout<<"Calculations for the amount "<<amount<<" PLN"<<" after "<<time<<" years"<<std::endl;
+        std::cout<<"--------------------------------------------------"<<std::endl;
+        std::cout<<"Profit:             "<<profit<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"Podatek:          "<<calculatedTax<<" PLN"<<std::endl;
+        std::cout<<"Tax:          "<<calculatedTax<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"Zysk po podatku:  "<<profitAfterTax<<" PLN"<<std::endl;
+        std::cout<<"Profit after tax:  "<<profitAfterTax<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"Koszty wycofania: "<<withdrawlCosts<<" PLN"<<std::endl;
+        std::cout<<"Withdrawal costs: "<<withdrawlCosts<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"----------------------------------------"<<std::endl;
+        std::cout<<"--------------------------------------------------"<<std::endl;
     }
 };
 

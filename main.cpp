@@ -24,7 +24,7 @@ int main(void)
     int choice = 0;
     do
     {
-        std::cout<<"Wybierz obligacje: "<<std::endl;
+        std::cout<<"Select treasury bonds: "<<std::endl;
         std::cin>>choice;
     } while (choice < 0 || choice > 9);
 
@@ -33,7 +33,7 @@ int main(void)
     float amount = 0;
     do
     {
-        std::cout<<"Podaj kwote inwestycji"<<std::endl;
+        std::cout<<"Enter the investment amount: "<<std::endl;
         std::cin>>amount;
     } while (amount < 0);
 
@@ -135,20 +135,21 @@ int main(void)
 void displayMenu()
 {
     //list
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"I. Obligacje o oprocentowaniu stalym - odsetki przy wykupie"<<std::endl;
-    std::cout<<"1. 3 miesięczne OTS - 3.00 %"<<std::endl;
-    std::cout<<"2. 3 letnie TOS - 6.85 %"<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"II. Obligacje o oprocentowaniu zmiennym - odsetki co miesiąc"<<std::endl;
-    std::cout<<"3. 1 rok ROR - 6.75 %"<<std::endl;
-    std::cout<<"4. 2 letnie DOR - 6.85 %"<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
-    std::cout<<"III. Obligacje indeksowane inflacją"<<std::endl;
-    std::cout<<"5. 4 letnie COI - 7.00 %, odsetki co roku"<<std::endl;
-    std::cout<<"6. !Rodzinne 6 letnie ROS - 7.20 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
-    std::cout<<"7. 10 letnie EDO - 7.25 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
-    std::cout<<"8. !Rodzinne 12 letnie ROD - 7.50 %, odsetki przy wykupie, kapitalizowane"<<std::endl;
-    std::cout<<"----------------------------------------"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"-------------------MENU-----------------------------------------------------"<<std::endl;
+    std::cout<<"I. Treasury bonds with a fixed interest rate - interest on bond redemption"<<std::endl;
+    std::cout<<"1. 3 months OTS - 3.00 %"<<std::endl;
+    std::cout<<"2. 3 years TOS - 6.85 %"<<std::endl;
+    std::cout<<"----------------------------------------------------------------------------"<<std::endl;
+    std::cout<<"II. Treasury bonds with a changing interest rate - intrest every month"<<std::endl;
+    std::cout<<"3. 1 year ROR - 6.75 %"<<std::endl;
+    std::cout<<"4. 2 years DOR - 6.85 %"<<std::endl;
+    std::cout<<"----------------------------------------------------------------------------"<<std::endl;
+    std::cout<<"III. Treasury bonds indexed to inflation"<<std::endl;
+    std::cout<<"5. 4 years COI - 7.00 %, intrest every year"<<std::endl;
+    std::cout<<"6. Family 6 years ROS - 7.20 %, interest on bond redemption, capitalization"<<std::endl;
+    std::cout<<"7. 10 yers EDO - 7.25 %, interest on bond redemption, capitalization"<<std::endl;
+    std::cout<<"8. Family 12 years ROD - 7.50 %, interest on bond redemption, capitalization"<<std::endl;
+    std::cout<<"----------------------------------------------------------------------------"<<std::endl;
     std::cout<<std::endl;
 }
