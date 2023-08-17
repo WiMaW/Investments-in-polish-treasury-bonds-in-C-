@@ -33,18 +33,18 @@ class Tos: public Ots {
     void displayCalculationsTos(float amount, float profit, float calculatedTax, float profitAfterTax, float withdrawlCosts)
     {
         std::cout<<std::endl;
-        std::cout<<"--------------------------------------------------"<<std::endl;
+        std::cout<<"-------------------------------------------------------"<<std::endl;
         std::cout<<"Calculations for the amount "<<amount<<" PLN"<<" after "<<time<<" years"<<std::endl;
-        std::cout<<"--------------------------------------------------"<<std::endl;
+        std::cout<<"-------------------------------------------------------"<<std::endl;
         std::cout<<"Profit:             "<<profit<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"Tax:          "<<calculatedTax<<" PLN"<<std::endl;
+        std::cout<<"Tax:                "<<calculatedTax<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"Profit after tax:  "<<profitAfterTax<<" PLN"<<std::endl;
+        std::cout<<"Profit after tax:   "<<profitAfterTax<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"Withdrawal costs: "<<withdrawlCosts<<" PLN"<<std::endl;
+        std::cout<<"Withdrawal costs:   "<<withdrawlCosts<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"--------------------------------------------------"<<std::endl;
+        std::cout<<"-------------------------------------------------------"<<std::endl;
     }
 };
 
