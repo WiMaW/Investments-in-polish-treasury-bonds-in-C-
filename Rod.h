@@ -8,7 +8,5 @@ class Rod: public Edo {
     const float time = 12.0;
     const float intrestFirstPeriod = 0.075;
     const float fee = 2.0;
-
-
 };
 #endif

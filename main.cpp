@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctype.h>
 #include "Ots.h"
 #include "Tos.h"
 #include "Ror.h"
@@ -26,7 +27,7 @@ int main(void)
     {
         std::cout<<"Select treasury bonds: "<<std::endl;
         std::cin>>choice;
-    } while (choice < 0 || choice > 9);
+    } while (choice < 0 || choice > 9 || isalpha(choice));
 
 
     //amount of money to invest
@@ -35,7 +36,7 @@ int main(void)
     {
         std::cout<<"Enter the investment amount: "<<std::endl;
         std::cin>>amount;
-    } while (amount < 0);
+    } while (amount < 0 || isalpha(amount));
 
     //variables to use in calculations
     float intrest = 0; //per year
