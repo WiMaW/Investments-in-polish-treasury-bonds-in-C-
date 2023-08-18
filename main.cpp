@@ -23,11 +23,25 @@ int main(void)
 
     //choice
     int choice = 0;
-    do
+
+    try
     {
-        std::cout<<"Select treasury bonds: "<<std::endl;
-        std::cin>>choice;
-    } while (choice < 0 || choice > 9 || isalpha(choice));
+        do
+        {
+            std::cout<<"Select treasury bonds: "<<std::endl;
+            std::cin>>choice;
+        } while (choice < 0 || choice > 9);
+
+        if(std::cin.fail())
+        {
+            throw 0;
+        }
+    }
+    catch (int &ex)
+    {
+        std::cerr<<"Error: Not an integer."<<std::endl;
+        return 1;
+    }
 
 
     //amount of money to invest
@@ -36,7 +50,7 @@ int main(void)
     {
         std::cout<<"Enter the investment amount: "<<std::endl;
         std::cin>>amount;
-    } while (amount < 0 || isalpha(amount));
+    } while (amount < 0);
 
     //variables to use in calculations
     float intrest = 0; //per year
