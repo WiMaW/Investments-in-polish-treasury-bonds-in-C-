@@ -35,7 +35,7 @@ class Ots {
         std::cout<<"-------------------------------------------------------"<<std::endl;
         std::cout<<"Profit:             "<<profit<<" PLN"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"Tax:                     "<<calculatedTax<<" PLN"<<std::endl;
+        std::cout<<"Tax:                "<<calculatedTax<<" PLN"<<std::endl;
         std::cout<<std::endl;
         std::cout<<"Profit after tax:   "<<profitAfterTax<<" PLN"<<std::endl;
         std::cout<<std::endl;
